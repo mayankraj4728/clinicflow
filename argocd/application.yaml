@@ -1,0 +1,38 @@
+# ArgoCD Application for ClinicFlow (GitOps).
+#
+# Apply once; after that ArgoCD continuously reconciles the cluster to match
+# the Helm chart committed in this repository.
+#
+#   kubectl apply -f argocd/application.yaml
+#
+# Replace <owner> with your GitHub username / org before applying.
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: clinicflow
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/<owner>/clinicflow.git
+    targetRevision: main
+    path: helm/clinicflow
+    helm:
+      valueFiles:
+        - values.yaml
+      parameters:
+        - name: backend.image
+          value: ghcr.io/<owner>/clinicflow-backend
+        - name: frontend.image
+          value: ghcr.io/<owner>/clinicflow-frontend
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: clinicflow
+  syncPolicy:
+    automated:
+      prune: true      # remove resources deleted from Git
+      selfHeal: true   # revert manual drift in the cluster
+    syncOptions:
+      - CreateNamespace=true
