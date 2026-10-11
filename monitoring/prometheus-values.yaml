@@ -1,0 +1,36 @@
+# Helm values for the kube-prometheus-stack chart (Prometheus + Grafana).
+#
+# Install:
+#   helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+#   helm repo update
+#   kubectl create namespace monitoring
+#   helm install monitoring prometheus-community/kube-prometheus-stack \
+#     -n monitoring -f monitoring/prometheus-values.yaml
+#
+# Then apply the ClinicFlow dashboard:
+#   kubectl apply -f monitoring/grafana-dashboard.yaml
+
+grafana:
+  enabled: true
+  # Demo credentials - change before any real deployment.
+  adminPassword: clinicflow-admin
+  sidecar:
+    dashboards:
+      enabled: true        # auto-load ConfigMaps labelled grafana_dashboard
+      label: grafana_dashboard
+      searchNamespace: ALL
+
+prometheus:
+  prometheusSpec:
+    # Discover ServiceMonitors in every namespace, not just this release's.
+    serviceMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelector: {}
+    serviceMonitorNamespaceSelector: {}
+    # Keep 7 days of metrics.
+    retention: 7d
+  # Expose the Prometheus UI:  kubectl port-forward -n monitoring svc/monitoring-kube-prometheus-prometheus 9090:9090
+  service:
+    type: ClusterIP
+
+alertmanager:
+  enabled: true
