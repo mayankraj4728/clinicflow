@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: clinicflow-broken-service
+  namespace: clinicflow
+spec:
+  # This selector deliberately matches no pods: no endpoints -> no traffic.
+  selector:
+    app: label-that-does-not-exist
+  ports:
+    - port: 8080
+      targetPort: 8080
