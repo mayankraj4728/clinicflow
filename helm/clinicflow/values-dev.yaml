@@ -1,0 +1,7 @@
+# Dev overrides: enable ingress, keep a single replica to save resources.
+replicaCount: 1
+ingress:
+  enabled: true
+  host: clinicflow.local
+hpa:
+  enabled: false

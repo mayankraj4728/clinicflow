@@ -1,0 +1,49 @@
+# Default values for the ClinicFlow chart.
+
+replicaCount: 2
+
+backend:
+  image: ghcr.io/YOUR_GITHUB_USERNAME/clinicflow-backend
+  tag: latest
+  port: 8000
+
+frontend:
+  image: ghcr.io/YOUR_GITHUB_USERNAME/clinicflow-frontend
+  tag: latest
+  port: 8080
+
+imagePullSecrets: []
+
+# In-cluster PostgreSQL for the classroom / demo deployment.
+# In production on AWS you would point this at Amazon RDS instead.
+postgres:
+  enabled: true
+  image: postgres:16-alpine
+  host: clinicflow-postgres
+  database: clinicflow
+  username: clinicflow
+  password: clinicflow
+  storage: 5Gi
+
+ingress:
+  enabled: false
+  className: nginx
+  host: clinicflow.local
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 6
+  targetCPUUtilizationPercentage: 60
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+monitoring:
+  serviceMonitor:
+    enabled: true

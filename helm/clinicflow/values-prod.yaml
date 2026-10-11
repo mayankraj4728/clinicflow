@@ -1,0 +1,9 @@
+# Production overrides: two replicas, autoscaling, ingress on a real host.
+replicaCount: 2
+ingress:
+  enabled: true
+  host: clinicflow.example.com
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 8
