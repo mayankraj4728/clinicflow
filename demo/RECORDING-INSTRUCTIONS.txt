@@ -1,0 +1,18 @@
+MANDATORY VIDEO — RECORD THIS YOURSELF
+======================================
+The grading rubric gives 0 points for module M10 if the video is missing,
+so this one file has to come from you (it must show your own screen).
+
+How to record a placeholder you can replace later, in ~5 minutes:
+
+macOS QuickTime (easiest)
+  1. Open QuickTime Player  ->  File  ->  New Screen Recording.
+  2. Click Record, then run the demo steps in demo/README.md.
+  3. Stop, then File -> Save As  clinicflow-demo.mp4  into this demo/ folder.
+
+Then commit it:
+  git add demo/clinicflow-demo.mp4
+  git commit -m "docs: add capstone presentation video"
+
+Keep it under ~100 MB. If it is bigger, upload it as a GitHub Release asset
+instead and link the release in README.md.
