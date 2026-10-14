@@ -128,13 +128,18 @@ jobs:
 
       - name: Deploy with Helm
         run: |
+          # The throwaway kind cluster has no Prometheus Operator, so the
+          # ServiceMonitor CRD (monitoring.coreos.com/v1) is absent. Disable the
+          # ServiceMonitor here so helm can apply; real monitoring runs on the
+          # actual cluster where kube-prometheus-stack is installed.
           helm upgrade --install clinicflow ./helm/clinicflow \
             --namespace clinicflow --create-namespace \
             --set backend.image=${{ env.BACKEND_IMAGE }} \
             --set backend.tag=${{ github.sha }} \
             --set frontend.image=${{ env.FRONTEND_IMAGE }} \
             --set frontend.tag=${{ github.sha }} \
-            --set postgres.enabled=true
+            --set postgres.enabled=true \
+            --set monitoring.serviceMonitor.enabled=false
 
       - name: Show cluster state
         run: |
