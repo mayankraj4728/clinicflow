@@ -75,23 +75,22 @@ jobs:
       - name: Build frontend image
         run: docker build -t ${{ env.FRONTEND_IMAGE }}:${{ github.sha }} ./frontend
 
+      - name: Install Trivy
+        run: |
+          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh \
+            | sudo sh -s -- -b /usr/local/bin
+
       - name: Scan backend image with Trivy
-        uses: aquasecurity/trivy-action@v0.30.0
-        with:
-          image-ref: ${{ env.BACKEND_IMAGE }}:${{ github.sha }}
-          format: table
-          severity: HIGH,CRITICAL
-          ignore-unfixed: true
-          exit-code: "1"
+        run: |
+          trivy image --format table --severity HIGH,CRITICAL \
+            --ignore-unfixed --exit-code 1 \
+            ${{ env.BACKEND_IMAGE }}:${{ github.sha }}
 
       - name: Scan frontend image with Trivy
-        uses: aquasecurity/trivy-action@v0.30.0
-        with:
-          image-ref: ${{ env.FRONTEND_IMAGE }}:${{ github.sha }}
-          format: table
-          severity: HIGH,CRITICAL
-          ignore-unfixed: true
-          exit-code: "1"
+        run: |
+          trivy image --format table --severity HIGH,CRITICAL \
+            --ignore-unfixed --exit-code 1 \
+            ${{ env.FRONTEND_IMAGE }}:${{ github.sha }}
 
       - name: Push images to GHCR (SHA tag)
         if: github.event_name == 'push'
