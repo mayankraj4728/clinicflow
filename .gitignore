@@ -37,3 +37,9 @@ terraform.tfvars
 .pytest_cache/
 .coverage
 htmlcov/
+
+# Large demo videos (exceed GitHub's 100 MB limit — upload as a Release asset)
+*.mov
+*.mp4
+*.mkv
+*.webm

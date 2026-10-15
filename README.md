@@ -395,33 +395,54 @@ at it — add as many lines as you have images per milestone.
 
 ### M1 — Application
 
+**ClinicFlow dashboard 👇**
+
 ![ClinicFlow dashboard](docs/screenshots/m1-app-1.png)
+
+**Create appointment 👇**
+
+
 ![Create appointment](docs/screenshots/m1-app-2.png)
+
+**Create appointment 👇**
+
+![Create appointment](docs/screenshots/m1-app-3.png)
 <!-- ![Appointment list](docs/screenshots/m1-app-3.png) -->
 
 ### M2 — Testing
+
+**pytest suite passing 👇**
 
 ![pytest suite passing](docs/screenshots/m2-tests-1.png)
 <!-- ![Coverage / test output](docs/screenshots/m2-tests-2.png) -->
 
 ### M3 — Git workflow
 
+**Commit history 👇**
+
 ![Commit history](docs/screenshots/m3-git-1.png)
 <!-- ![Branches / PRs](docs/screenshots/m3-git-2.png) -->
 
 ### M4 — Docker & GHCR
 
+**Backend Dockerfile 👇**
+
 ![Backend Dockerfile](docs/screenshots/m4-docker-1.png)
+
+**GHCR packages with SHA tags 👇**
+
 ![GHCR packages with SHA tags](docs/screenshots/m4-ghcr-1.png)
 <!-- ![Frontend Dockerfile](docs/screenshots/m4-docker-2.png) -->
 
 ### M5 — CI/CD pipeline
+**Green GitHub Actions run 👇**
 
 ![Green GitHub Actions run](docs/screenshots/m5-cicd-1.png)
-![Pipeline jobs expanded](docs/screenshots/m5-cicd-2.png)
 <!-- ![Push to GHCR step](docs/screenshots/m5-cicd-3.png) -->
 
 ### M6 — Security scanning (Trivy)
+
+**Trivy scan output 👇**
 
 ![Trivy scan output](docs/screenshots/m6-trivy-1.png)
 <!-- ![Trivy scan output (frontend)](docs/screenshots/m6-trivy-2.png) -->
@@ -432,36 +453,79 @@ at it — add as many lines as you have images per milestone.
 and would be remediated by bumping the base image once a patched version ships.
 
 ### M7 — Terraform & AWS
+**terraform init 👇**
 
-![terraform plan](docs/screenshots/m7-tf-plan-1.png)
+![terraform init](docs/screenshots/m7-tf-init-1.png)
+
+**terraform apply 👇**
+
 ![terraform apply](docs/screenshots/m7-tf-apply-1.png)
+
+**terraform apply 👇**
+
+![terraform apply](docs/screenshots/m7-tf-apply-2.png)
+
+**terraform destroy 👇**
+
 ![terraform destroy](docs/screenshots/m7-tf-destroy-1.png)
+
+**AWS Console — VPC 👇**
+
 ![AWS Console — VPC](docs/screenshots/m7-aws-vpc-1.png)
+
+**AWS Console — VPC 👇**
+
+![AWS Console — VPC](docs/screenshots/m7-aws-vpc-2.png)
+
+**AWS Console — EKS cluster Active 👇**
+
 ![AWS Console — EKS cluster Active](docs/screenshots/m7-aws-eks-1.png)
 <!-- ![AWS Console — node group](docs/screenshots/m7-aws-nodes-1.png) -->
 
 ### M8 — Kubernetes + Helm
 
+**kubectl get pods 👇**
+
 ![kubectl get pods](docs/screenshots/m8-pods-1.png)
+
+**kubectl get svc 👇**
+
 ![kubectl get svc](docs/screenshots/m8-svc-1.png)
-![kubectl get ingress](docs/screenshots/m8-ingress-1.png)
+
+**helm list 👇**
+
 ![helm list](docs/screenshots/m8-helm-1.png)
-![App via Ingress](docs/screenshots/m8-app-ingress-1.png)
+
+**kubectl get ingress 👇**
+
+![kubectl get ingress](docs/screenshots/m8-ingress-1.png)
+
 <!-- ![kubectl get hpa](docs/screenshots/m8-hpa-1.png) -->
 
 ### M9 — Monitoring (Prometheus & Grafana)
 
+**Prometheus targets UP 👇**
+
 ![Prometheus targets UP](docs/screenshots/m9-prometheus-1.png)
+
+**Grafana dashboard panel 👇**
+
 ![Grafana dashboard panel](docs/screenshots/m9-grafana-1.png)
+
+**metrics endpoint output 👇**
+
 ![/metrics endpoint output](docs/screenshots/m9-metrics-1.png)
 <!-- ![Grafana — second panel](docs/screenshots/m9-grafana-2.png) -->
 
 ### M10 — Presentation & GitOps
 
+**ArgoCD — Synced & Healthy 👇**
+
 ![ArgoCD — Synced & Healthy](docs/screenshots/m10-argocd-1.png)
 <!-- ![Slides title](docs/screenshots/m10-slides-1.png) -->
 
-🎥 **Demo video:** [`demo/clinicflow-demo.mp4`](demo/clinicflow-demo.mp4)
+🎥 **Demo video:** [`demo/clinicflow-demo.mp4`](demo-part-1)
+🎥 **Demo video:** [`demo/clinicflow-demo.mp4`](demo/clinicflow-demo-part-)
 <!-- if the file is >100 MB, upload it as a GitHub Release asset and link it here instead -->
 
 ---

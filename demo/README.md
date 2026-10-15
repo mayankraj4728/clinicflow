@@ -4,7 +4,7 @@ This folder holds the presentation material for the ClinicFlow capstone.
 
 | File | Purpose |
 |------|---------|
-| `clinicflow-slides.pptx` | Slide deck (11 slides) — project overview, stack, architecture, CI/CD, infrastructure, K8s, observability, key learnings. |
+| `clinicflow-slides.pdf` | Slide deck (11 slides) — project overview, stack, architecture, CI/CD, infrastructure, K8s, observability, key learnings. |
 | `clinicflow-demo.mp4` | **Presentation video** — full live walkthrough (see below). |
 
 ## Video walkthrough script
