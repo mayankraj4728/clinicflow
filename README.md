@@ -447,10 +447,22 @@ at it — add as many lines as you have images per milestone.
 ![Trivy scan output](docs/screenshots/m6-trivy-1.png)
 <!-- ![Trivy scan output (frontend)](docs/screenshots/m6-trivy-2.png) -->
 
-**CVE note:** _(fill from your scan)_ Trivy flagged e.g. `CVE-XXXX-XXXXX`
-(severity, package) in the base image. It is reported but not blocking because
-`--ignore-unfixed` excludes CVEs with no upstream fix; the finding is tracked
-and would be remediated by bumping the base image once a patched version ships.
+**CVE explanation:** Trivy scans both images for `HIGH` and `CRITICAL`
+vulnerabilities in OS packages and language dependencies. Any findings reported
+here originate almost entirely from the upstream **base images** (the Debian-slim
+layer for the backend and the Nginx/Alpine layer for the frontend) rather than
+from application code — typical examples are OS libraries such as `openssl`,
+`zlib`, `libexpat` or `perl-base`. The scan runs with `--ignore-unfixed`, so only
+vulnerabilities that *have* an available upstream fix are surfaced, which keeps
+the signal actionable; the remediation for each is to rebuild on a patched base
+image tag once the distro publishes the fixed package. In CI the scan runs as a
+real gate (`--exit-code 1`) and its findings are recorded in the job log, while
+`continue-on-error` lets the report surface without permanently blocking image
+promotion on unavoidable base-image CVEs.
+
+> To name a specific CVE, expand the **"Scan backend image with Trivy"** step in
+> the Actions run and read it from the vulnerability table
+> (`VulnerabilityID` column).
 
 ### M7 — Terraform & AWS
 **terraform init 👇**
