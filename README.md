@@ -28,7 +28,8 @@ observability.
 11. [Kubernetes + Helm deployment](#kubernetes--helm-deployment)
 12. [Observability](#observability)
 13. [Troubleshooting lab](#troubleshooting-lab)
-14. [Known issues and limitations](#known-issues-and-limitations)
+14. [Screenshots & deliverables](#screenshots--deliverables)
+15. [Known issues and limitations](#known-issues-and-limitations)
 
 ---
 
@@ -380,6 +381,88 @@ kubectl get pods --show-labels                         # labels don't line up
 
 Key lesson: a Service selects Pods by **label**, so no matching labels means no
 endpoints and no traffic.
+
+---
+
+## Screenshots & deliverables
+
+Evidence for each graded milestone. All images live in `docs/screenshots/`.
+To add one, drop the file into that folder and point an `![caption](path)` line
+at it — add as many lines as you have images per milestone.
+
+> **Naming convention:** `docs/screenshots/<milestone>-<topic>-<n>.png`
+> e.g. `m8-pods-1.png`, `m8-svc-2.png`, `m9-grafana-1.png`.
+
+### M1 — Application
+
+![ClinicFlow dashboard](docs/screenshots/m1-app-1.png)
+![Create appointment](docs/screenshots/m1-app-2.png)
+<!-- ![Appointment list](docs/screenshots/m1-app-3.png) -->
+
+### M2 — Testing
+
+![pytest suite passing](docs/screenshots/m2-tests-1.png)
+<!-- ![Coverage / test output](docs/screenshots/m2-tests-2.png) -->
+
+### M3 — Git workflow
+
+![Commit history](docs/screenshots/m3-git-1.png)
+<!-- ![Branches / PRs](docs/screenshots/m3-git-2.png) -->
+
+### M4 — Docker & GHCR
+
+![Backend Dockerfile](docs/screenshots/m4-docker-1.png)
+![GHCR packages with SHA tags](docs/screenshots/m4-ghcr-1.png)
+<!-- ![Frontend Dockerfile](docs/screenshots/m4-docker-2.png) -->
+
+### M5 — CI/CD pipeline
+
+![Green GitHub Actions run](docs/screenshots/m5-cicd-1.png)
+![Pipeline jobs expanded](docs/screenshots/m5-cicd-2.png)
+<!-- ![Push to GHCR step](docs/screenshots/m5-cicd-3.png) -->
+
+### M6 — Security scanning (Trivy)
+
+![Trivy scan output](docs/screenshots/m6-trivy-1.png)
+<!-- ![Trivy scan output (frontend)](docs/screenshots/m6-trivy-2.png) -->
+
+**CVE note:** _(fill from your scan)_ Trivy flagged e.g. `CVE-XXXX-XXXXX`
+(severity, package) in the base image. It is reported but not blocking because
+`--ignore-unfixed` excludes CVEs with no upstream fix; the finding is tracked
+and would be remediated by bumping the base image once a patched version ships.
+
+### M7 — Terraform & AWS
+
+![terraform plan](docs/screenshots/m7-tf-plan-1.png)
+![terraform apply](docs/screenshots/m7-tf-apply-1.png)
+![terraform destroy](docs/screenshots/m7-tf-destroy-1.png)
+![AWS Console — VPC](docs/screenshots/m7-aws-vpc-1.png)
+![AWS Console — EKS cluster Active](docs/screenshots/m7-aws-eks-1.png)
+<!-- ![AWS Console — node group](docs/screenshots/m7-aws-nodes-1.png) -->
+
+### M8 — Kubernetes + Helm
+
+![kubectl get pods](docs/screenshots/m8-pods-1.png)
+![kubectl get svc](docs/screenshots/m8-svc-1.png)
+![kubectl get ingress](docs/screenshots/m8-ingress-1.png)
+![helm list](docs/screenshots/m8-helm-1.png)
+![App via Ingress](docs/screenshots/m8-app-ingress-1.png)
+<!-- ![kubectl get hpa](docs/screenshots/m8-hpa-1.png) -->
+
+### M9 — Monitoring (Prometheus & Grafana)
+
+![Prometheus targets UP](docs/screenshots/m9-prometheus-1.png)
+![Grafana dashboard panel](docs/screenshots/m9-grafana-1.png)
+![/metrics endpoint output](docs/screenshots/m9-metrics-1.png)
+<!-- ![Grafana — second panel](docs/screenshots/m9-grafana-2.png) -->
+
+### M10 — Presentation & GitOps
+
+![ArgoCD — Synced & Healthy](docs/screenshots/m10-argocd-1.png)
+<!-- ![Slides title](docs/screenshots/m10-slides-1.png) -->
+
+🎥 **Demo video:** [`demo/clinicflow-demo.mp4`](demo/clinicflow-demo.mp4)
+<!-- if the file is >100 MB, upload it as a GitHub Release asset and link it here instead -->
 
 ---
 
