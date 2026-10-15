@@ -104,6 +104,16 @@ jobs:
           docker push ${{ env.BACKEND_IMAGE }}:${{ github.sha }}
           docker push ${{ env.FRONTEND_IMAGE }}:${{ github.sha }}
 
+      # Also publish a :latest tag on main so GitOps tools (ArgoCD) can track it.
+      # The SHA tag remains the canonical, immutable deploy tag.
+      - name: Push :latest tag (main only)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: |
+          docker tag ${{ env.BACKEND_IMAGE }}:${{ github.sha }} ${{ env.BACKEND_IMAGE }}:latest
+          docker tag ${{ env.FRONTEND_IMAGE }}:${{ github.sha }} ${{ env.FRONTEND_IMAGE }}:latest
+          docker push ${{ env.BACKEND_IMAGE }}:latest
+          docker push ${{ env.FRONTEND_IMAGE }}:latest
+
   # ============================================================
   # STAGE 3 - DEPLOY (main branch only)
   # Deploys to a throwaway kind cluster so the pipeline is
