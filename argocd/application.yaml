@@ -5,7 +5,7 @@
 #
 #   kubectl apply -f argocd/application.yaml
 #
-# Replace <owner> with your GitHub username / org before applying.
+# Replace mayankraj4728 with your GitHub username / org before applying.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -16,7 +16,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<owner>/clinicflow.git
+    repoURL: https://github.com/mayankraj4728/clinicflow.git
     targetRevision: main
     path: helm/clinicflow
     helm:
@@ -24,9 +24,9 @@ spec:
         - values.yaml
       parameters:
         - name: backend.image
-          value: ghcr.io/<owner>/clinicflow-backend
+          value: ghcr.io/mayankraj4728/clinicflow-backend
         - name: frontend.image
-          value: ghcr.io/<owner>/clinicflow-frontend
+          value: ghcr.io/mayankraj4728/clinicflow-frontend
   destination:
     server: https://kubernetes.default.svc
     namespace: clinicflow
