@@ -1,0 +1,17 @@
+# The frontend's nginx.conf proxies to the fixed hostname "backend" (the name
+# used by docker-compose). Expose the backend pods under that name in Kubernetes
+# too, so the same image works unchanged in both environments.
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    app: clinicflow-backend
+spec:
+  type: ClusterIP
+  selector:
+    app: clinicflow-backend
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
