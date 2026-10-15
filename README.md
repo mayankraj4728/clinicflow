@@ -524,9 +524,12 @@ and would be remediated by bumping the base image once a patched version ships.
 ![ArgoCD — Synced & Healthy](docs/screenshots/m10-argocd-1.png)
 <!-- ![Slides title](docs/screenshots/m10-slides-1.png) -->
 
-🎥 **Demo video:** [`demo/clinicflow-demo.mp4`](demo-part-1)
-🎥 **Demo video:** [`demo/clinicflow-demo.mp4`](demo/clinicflow-demo-part-)
-<!-- if the file is >100 MB, upload it as a GitHub Release asset and link it here instead -->
+🎥 **Demo video** (hosted as GitHub Release assets — too large for the repo):
+
+- **Part 1:** [clinicflow-demo-part-1.mov](https://github.com/mayankraj4728/clinicflow/releases/download/v1.0.0/clinicflow-demo-part-1.mov)
+- **Part 2:** [clinicflow-demo-part-2.mov](https://github.com/mayankraj4728/clinicflow/releases/download/v1.0.0/clinicflow-demo-part-2.mov)
+
+All release assets: <https://github.com/mayankraj4728/clinicflow/releases/tag/v1.0.0>
 
 ---
 
